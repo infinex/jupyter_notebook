@@ -28,8 +28,6 @@ ALL_IMAGES:= \
 	minimal-notebook \
 	r-notebook \
 	scipy-notebook \
-	tensorflow-notebook \
-	datascience-notebook \
 	pyspark-notebook \
 	all-spark-notebook
 
@@ -106,7 +104,7 @@ build-multi/%: ## build the latest image for a stack on both amd64 and arm64
 	@echo "::endgroup::"
 
 	@echo "::group::Build $(OWNER)/$(notdir $@) (amd64,arm64)"
-	docker buildx build $(DOCKER_BUILD_ARGS) -t build-multi-tmp-cache/$(notdir $@):latest ./$(notdir $@) --build-arg OWNER=$(OWNER) --platform "linux/amd64,linux/arm64"
+	docker buildx build $(DOCKER_BUILD_ARGS) -t build-multi-tmp-cache/$(notdir $@):latest ./$(notdir $@) --build-arg OWNER=$(OWNER) --platform "linux/amd64"
 	@echo "::endgroup::"
 build-all-multi: $(foreach I, $(MULTI_IMAGES), build-multi/$(I)) $(foreach I, $(AMD64_ONLY_IMAGES), build/$(I)) ## build all stacks
 
