@@ -9,6 +9,11 @@
 Jupyter Docker Stacks are a set of ready-to-run [Docker images](https://hub.docker.com/u/jupyter)
 containing Jupyter applications and interactive computing tools.
 
+## TLDR
+```
+
+make build-all DOCKER_BUILD_ARGS="--build-arg PYTHON_VERSION=3.8 --build-arg spark_version=3.0.3 --build-arg hadoop_version=2.7" 
+```
 ## Quick Start
 
 You can try a [relatively recent build of the jupyter/base-notebook image on mybinder.org](https://mybinder.org/v2/gh/jupyter/docker-stacks/master?filepath=README.ipynb)
